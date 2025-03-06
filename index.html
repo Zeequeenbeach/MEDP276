@@ -69,11 +69,15 @@
     document.addEventListener('DOMContentLoaded', function () {
       var scene = document.querySelector('a-scene');
       var splash = document.querySelector('#splash');
+
       scene.addEventListener('loaded', function (e) {
-        splash.style.display = 'none';
+        setTimeout(function () {
+          splash.style.display = 'none';
+        }, 3000);
       });
     });
   </script>
+
 </head>
 
 <body>
@@ -90,7 +94,7 @@
       <a-asset-item id="house" src="assets/house/house.gltf"></a-asset-item>
     </a-assets>
 
-    <a-sound src="#audio"></a-sound>
+    <a-sound src="#audio" autoplay="true" volume="10"></a-sound>
 
     <a-entity environment="
         preset: moon; 
@@ -104,9 +108,11 @@
         groundYScale: 2;">
     </a-entity>
 
-    <a-gltf-model src="#house" position="-1 0 -30" rotation="0 0 0" scale="10 10 10"
-      animation="property: position; to: -1 0 -200; dur: 20000; easing: linear; loop: false;">
+    <a-gltf-model src="#house" position="-1 -0.75 -30" rotation="0 0 0" scale="10 10 10"
+      animation="property: position; to: -1 0 -200; dur: 40000; easing: linear; loop: false;">
     </a-gltf-model>
+
+    <a-plane position="-1 -0.75 -250" rotation="-90 0 0" width="500" height="500" color="#27275c"></a-plane>
 
     <a-entity camera look-controls wasd-controls="acceleration:20" position="1 1.6 0"></a-entity>
   </a-scene>
